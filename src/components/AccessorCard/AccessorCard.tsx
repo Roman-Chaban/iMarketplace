@@ -1,15 +1,15 @@
-import { FC, useState } from 'react';
-import { Accessories } from '../../interfaces/accessories';
-import styles from '../ProductCard/ProductCard.module.scss';
-import { useLanguage } from '../../hooks/useLanguage';
-import { useAppDispatch } from '../../hooks/reduxHooks/useAppDispatch';
-import { deleteAccessoriesFromCart } from '../../redux/slices/cartSlice';
-import AddCircleIcon from '@mui/icons-material/AddCircle';
-import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
-import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-import { translations } from '../../components/LanguageSwitcher/translation';
-import { useTotal } from '../TotalContext/TotalContext';
-import { Link } from 'react-router-dom';
+import { FC, useState } from "react";
+import { Accessories } from "../../interfaces/accessories";
+import styles from "../ProductCard/ProductCard.module.scss";
+import { useLanguage } from "../../hooks/useLanguage";
+import { useAppDispatch } from "../../hooks/reduxHooks/useAppDispatch";
+import { deleteAccessoriesFromCart } from "../../redux/slices/cartSlice";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
+import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+import { translations } from "../../components/LanguageSwitcher/translation";
+import { useTotal } from "../TotalContext/TotalContext";
+import { Link } from "react-router-dom";
 
 interface AccessoryCardProps {
   accessory: Accessories;
@@ -23,7 +23,7 @@ export const AccessoryCard: FC<AccessoryCardProps> = ({ accessory }) => {
   const { addToTotal, removeFromTotal } = useTotal();
 
   const accessoryPrice =
-    typeof accessory.priceRegular === 'string'
+    typeof accessory.priceRegular === "string"
       ? parseFloat(accessory.priceRegular)
       : accessory.priceRegular;
 
@@ -54,7 +54,7 @@ export const AccessoryCard: FC<AccessoryCardProps> = ({ accessory }) => {
   const renderProduct = () => (
     <div className={styles.productCard__container}>
       <div
-        className={`${styles.productCard} ${isRemoving ? styles.removing : ''}`}
+        className={`${styles.productCard} ${isRemoving ? styles.removing : ""}`}
         onTransitionEnd={handleTransitionEnd}
       >
         <div className={styles.productCard__header}>
@@ -63,7 +63,7 @@ export const AccessoryCard: FC<AccessoryCardProps> = ({ accessory }) => {
             className={styles.productCard__deleteButton}
             onClick={handleDeleteGoods}
           >
-            <HighlightOffIcon fontSize="large" style={{ color: 'red' }} />
+            <HighlightOffIcon fontSize="large" style={{ color: "red" }} />
           </button>
           <Link to={`/accessories/accessor/${accessory.id}`}>
             <img
@@ -76,19 +76,19 @@ export const AccessoryCard: FC<AccessoryCardProps> = ({ accessory }) => {
         <h4 className={styles.productCard__title}>{accessory.name}</h4>
         <div className={styles.counterPhone__block}>
           <button className={styles.plus} onClick={handleAddProduct}>
-            <AddCircleIcon style={{ color: '#65C466' }} fontSize="large" />
+            <AddCircleIcon style={{ color: "#65C466" }} fontSize="large" />
           </button>
           <button
             className={styles.minus}
             disabled={productItemCounter < 1}
             style={{
-              opacity: productItemCounter < 1 ? '0.5' : '1',
-              cursor: productItemCounter > 0 ? 'pointer' : 'not-allowed',
+              opacity: productItemCounter < 1 ? "0.5" : "1",
+              cursor: productItemCounter > 0 ? "pointer" : "not-allowed",
             }}
             onClick={handleRemoveProduct}
           >
             <RemoveCircleIcon
-              style={{ color: 'rgba(199, 53, 8, 0.8352941176)' }}
+              style={{ color: "rgba(199, 53, 8, 0.8352941176)" }}
               fontSize="large"
             />
           </button>
