@@ -27,12 +27,6 @@ Frontend:
 - Country Flag Icons
 - Grommet Icons
 
-Backend:
-- Not specified
-
-Database:
-- Not specified
-
 Other:
 - Vite
 - Sass / SCSS
